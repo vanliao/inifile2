@@ -137,7 +137,7 @@ int IniFile::Load(const string &filePath)
     release();
 
     iniFilePath = filePath;
-    std::ifstream ifs(iniFilePath);
+    std::ifstream ifs(iniFilePath.c_str());
     if (!ifs.is_open()) {
         errMsg = string("open") +iniFilePath+ string(" file failed");
         return ERR_OPEN_FILE_FAILED;
@@ -238,7 +238,7 @@ int IniFile::SaveAs(const string &filePath)
         }
     }
 
-    std::ofstream ofs(filePath);
+    std::ofstream ofs(filePath.c_str());
     ofs << data;
     ofs.close();
     return 0;
